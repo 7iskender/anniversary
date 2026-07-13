@@ -276,3 +276,38 @@ section { padding: 6rem clamp(1rem, 5vw, 6rem); }
 }
 .route-dot .dot-label { display: inline; width: auto; height: auto; border-radius: 0; background: transparent; color: inherit; box-shadow: none; }
 .route-dot.active .dot-label { background: transparent; color: inherit; }
+<<<<<<< HEAD
+
+/* Review pass: progressive first-date map and heart burst polish. */
+.realistic-map { background: linear-gradient(135deg, #cfeeff 0%, #f7fbff 46%, #d7e8d1 100%); }
+.map-sun { transform-origin: 825px 92px; animation: sunDrift 9s ease-in-out infinite; }
+.map-birds { animation: birdsFloat 7s ease-in-out infinite; opacity: .72; }
+#firstDateTrailBase, #firstDateTrailProgress { filter: drop-shadow(0 4px 8px rgba(112, 88, 18, .12)); }
+.route-dot { overflow: visible; }
+.route-dot::after {
+  content: "";
+  position: absolute;
+  inset: -.42rem;
+  border-radius: 999px;
+  border: 2px solid rgba(220,111,134,.22);
+  opacity: 0;
+  transform: scale(.72);
+}
+.route-dot.bursting::after { animation: heartRing .7s ease-out; }
+.route-dot.bursting .heart-icon { animation: heartPop .62s cubic-bezier(.18, 1.4, .45, 1); }
+@keyframes heartPop {
+  0% { transform: scale(.72) rotate(-8deg); }
+  48% { transform: scale(1.35) rotate(6deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+@keyframes heartRing {
+  0% { opacity: .7; transform: scale(.6); }
+  100% { opacity: 0; transform: scale(1.85); }
+}
+@keyframes sunDrift { 50% { transform: translateY(8px) scale(1.03); } }
+@keyframes birdsFloat { 50% { transform: translate(16px, -8px); } }
+.memory-card { overflow: hidden; }
+.memory-photos img { min-width: 0; }
+.memory-photos { align-items: start; }
+=======
+>>>>>>> main

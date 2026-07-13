@@ -1,6 +1,10 @@
 # Little Memory Booth
 
+<<<<<<< HEAD
+A single-page romantic anniversary scrapbook/photo-booth site built with HTML, CSS, JavaScript, Anime.js, and Intersection Observer. For now, just open `index.html` directly in your browser while you customize it.
+=======
 A single-page romantic anniversary scrapbook/photo-booth site built with HTML, CSS, JavaScript, Anime.js, and Intersection Observer. It is ready for GitHub Pages, Netlify, or Vercel.
+>>>>>>> main
 
 ## Suggested folder structure
 
@@ -41,6 +45,11 @@ Also replace image `alt` placeholder text in `index.html` if you want highly spe
 - Photo strip photos: 900×675 or similar 4:3 crops.
 - Put music in `assets/audio/` and set `musicPath` in `script.js`. Music does not autoplay; visitors must press **Play our song**.
 
+<<<<<<< HEAD
+## Opening it while editing
+
+Open `index.html` directly in your browser. No localhost server, deployment setup, backend, or build step is needed while you are editing the surprise.
+=======
 ## Testing locally
 
 From this folder run:
@@ -72,6 +81,7 @@ Then open `http://localhost:4173` in a browser. Use DevTools mobile emulation to
 2. Framework preset: **Other**.
 3. Build command: leave blank.
 4. Output directory: `.`.
+>>>>>>> main
 
 ## Animation notes
 
