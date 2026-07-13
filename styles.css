@@ -276,6 +276,7 @@ section { padding: 6rem clamp(1rem, 5vw, 6rem); }
 }
 .route-dot .dot-label { display: inline; width: auto; height: auto; border-radius: 0; background: transparent; color: inherit; box-shadow: none; }
 .route-dot.active .dot-label { background: transparent; color: inherit; }
+<<<<<<< HEAD
 
 /* Review pass: progressive first-date map and heart burst polish. */
 .realistic-map { background: linear-gradient(135deg, #cfeeff 0%, #f7fbff 46%, #d7e8d1 100%); }
@@ -308,3 +309,5 @@ section { padding: 6rem clamp(1rem, 5vw, 6rem); }
 .memory-card { overflow: hidden; }
 .memory-photos img { min-width: 0; }
 .memory-photos { align-items: start; }
+=======
+>>>>>>> main

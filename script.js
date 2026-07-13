@@ -66,6 +66,7 @@ function sceneMarkup(stop){
   }[stop.art];
   return `<div class="route-scene-grid">${art}<div class="scene-copy"><p class="eyebrow">First date stop</p><h3>${stop.title}</h3><p>${stop.text}</p><img src="${stop.photo}" loading="lazy" alt="CUSTOMIZE: ${stop.title} photo placeholder" width="520" height="360"></div></div>`;
 }
+<<<<<<< HEAD
 function updateRouteProgress(key){
   const path = $('#firstDateTrailProgress');
   if(!path) return;
@@ -80,11 +81,16 @@ function updateRouteProgress(key){
     path.style.strokeDashoffset = offset;
   }
 }
+=======
+>>>>>>> main
 function showRouteStop(key){
   const stop = anniversaryData.firstDateStops[key] || anniversaryData.firstDateStops.princeton;
   $('#routeScene').innerHTML = sceneMarkup(stop);
   $$('.route-dot').forEach(dot => dot.classList.toggle('active', dot.dataset.stop === key));
+<<<<<<< HEAD
   updateRouteProgress(key);
+=======
+>>>>>>> main
   if(hasAnime()) anime({targets:'#routeScene', opacity:[0,1], translateY:[16,0], duration:420, easing:'easeOutCubic'});
 }
 function bindTabs(){
@@ -125,10 +131,13 @@ let seq=''; function loveCode(k){ seq=(seq+k.toUpperCase()).slice(-4); if(seq===
 
 function burstFromButton(button){
   if(reduced) return;
+<<<<<<< HEAD
   button.classList.remove('bursting');
   void button.offsetWidth;
   button.classList.add('bursting');
   setTimeout(()=>button.classList.remove('bursting'), 700);
+=======
+>>>>>>> main
   const container = button.querySelector('.particles-container');
   const bubble = button.querySelector('.bubble');
   if(!container || container.dataset.busy === 'true') return;
@@ -156,5 +165,9 @@ function burstHearts(){ for(let i=0;i<24;i++){ const h=document.createElement('s
 function musicControls(){ const audio=$('#bgMusic'), vol=$('#musicVolume'), toggle=$('#musicToggle'), mute=$('#muteToggle'); vol.value=sessionStorage.memoryBoothVolume||.55; audio.volume=vol.value; toggle.onclick=()=> audio.paused ? audio.play().then(()=>toggle.textContent='Pause our song').catch(()=>modal('Music note','Add your audio file at assets/audio/our-song.mp3, then try again.')) : (audio.pause(),toggle.textContent='Play our song'); vol.oninput=()=>{audio.volume=vol.value;sessionStorage.memoryBoothVolume=vol.value}; mute.onclick=()=>{audio.muted=!audio.muted;mute.textContent=audio.muted?'Unmute':'Mute';mute.setAttribute('aria-pressed',audio.muted)}; }
 function dragChocolate(){ const ch=$('#chocolate'), cup=$('.cup'); ch.addEventListener('dragstart',e=>e.dataTransfer.setData('text/plain','chocolate')); cup.addEventListener('dragover',e=>e.preventDefault()); cup.addEventListener('drop',()=>modal('Cozy secret','Chocolate + matcha unlocked. Better together, obviously.')); }
 function finalStars(){ const box=$('#finalStars'); for(let i=0;i<38;i++){ const s=document.createElement('span'); s.textContent='✦'; s.style.left=Math.random()*100+'%'; s.style.top=Math.random()*70+'%'; s.style.animationDelay=Math.random()*4+'s'; box.append(s); }}
+<<<<<<< HEAD
 function init(){ setContent(); splitIntro(); buildTimeline(); buildGallery(); buildReasons(); finalStars(); bind(); showRouteStop("princeton"); observe(); introAnimations(); }
+=======
+function init(){ setContent(); splitIntro(); buildTimeline(); buildGallery(); buildReasons(); finalStars(); showRouteStop("princeton"); bind(); observe(); introAnimations(); }
+>>>>>>> main
 document.addEventListener('DOMContentLoaded', init);
