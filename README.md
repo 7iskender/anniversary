@@ -1,6 +1,6 @@
 # Little Memory Booth
 
-A single-page romantic anniversary scrapbook/photo-booth site built with HTML, CSS, JavaScript, Anime.js, and Intersection Observer. It is ready for GitHub Pages, Netlify, or Vercel.
+A single-page romantic anniversary scrapbook/photo-booth site built with HTML, CSS, JavaScript, Anime.js, and Intersection Observer. For now, just open `index.html` directly in your browser while you customize it.
 
 ## Suggested folder structure
 
@@ -41,37 +41,9 @@ Also replace image `alt` placeholder text in `index.html` if you want highly spe
 - Photo strip photos: 900×675 or similar 4:3 crops.
 - Put music in `assets/audio/` and set `musicPath` in `script.js`. Music does not autoplay; visitors must press **Play our song**.
 
-## Testing locally
+## Opening it while editing
 
-From this folder run:
-
-```bash
-python3 -m http.server 4173
-```
-
-Then open `http://localhost:4173` in a browser. Use DevTools mobile emulation to check phone layouts.
-
-## Deploying
-
-### GitHub Pages
-
-1. Push this folder to a GitHub repository.
-2. Go to **Settings → Pages**.
-3. Choose your branch and `/root` as the source.
-4. Save and wait for the Pages URL.
-
-### Netlify
-
-1. Drag this folder into Netlify Drop, or connect the GitHub repo.
-2. Build command: leave blank.
-3. Publish directory: `.`.
-
-### Vercel
-
-1. Import the GitHub repo in Vercel.
-2. Framework preset: **Other**.
-3. Build command: leave blank.
-4. Output directory: `.`.
+Open `index.html` directly in your browser. No localhost server, deployment setup, backend, or build step is needed while you are editing the surprise.
 
 ## Animation notes
 
