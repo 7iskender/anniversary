@@ -30,6 +30,8 @@ Edit the `anniversaryData` object near the top of `script.js`:
 - `musicPath`
 - `easterEggMessages`
 
+The hidden straw-hat/secret-photo trigger was intentionally removed so the intro cannot be blocked by an accidental modal.
+
 Also replace image `alt` placeholder text in `index.html` if you want highly specific descriptions.
 
 ## Adding photos and music
@@ -78,5 +80,5 @@ Then open `http://localhost:4173` in a browser. Use DevTools mobile emulation to
 - Hero timeline: the main image develops from blurred/soft to sharp with a gentle flash.
 - Scroll reveals: Intersection Observer triggers timeline cards, food assembly, map trail drawing, and envelope movement.
 - Gallery interactions: strips rise on hover, tap opens a modal, and **Take Another Look** shuffles strips with a flash.
-- Easter eggs: straw hat triple-click, duck clicks, monkey click, chocolate drop, LOVE keyboard code, peelable photo corner, treasure-map X, and chest click.
+- Easter eggs: duck clicks, monkey click, chocolate drop, LOVE keyboard code, peelable photo corner, treasure-map X, and chest click.
 - Reduced motion: `prefers-reduced-motion` disables or simplifies major animations.

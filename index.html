@@ -17,16 +17,14 @@
 
   <section id="intro" class="intro" aria-label="Opening memory booth animation">
     <div class="cloud cloud-one"></div><div class="cloud cloud-two"></div><div class="cloud cloud-three"></div>
-    <div class="intro-monkey monkey" role="img" aria-label="Cute monkey hanging from a rope"><span class="rope"></span><span class="monkey-face">🐵</span></div>
-    <div class="intro-ducks" aria-hidden="true"><button class="duck duck-left egg-duck" type="button">🦆</button><span class="heart-between">♥</span><button class="duck duck-right egg-duck" type="button">🦆</button></div>
+    <button class="intro-monkey monkey" type="button" aria-label="Small hanging monkey note"><span class="rope"></span><span class="monkey-face"></span></button>
+    <div class="intro-ducks"><button class="duck duck-left egg-duck" type="button" aria-label="Left duck"><span></span></button><span class="heart-between">♥</span><button class="duck duck-right egg-duck" type="button" aria-label="Right duck"><span></span></button></div>
     <div class="curtain-wrap" aria-hidden="true"><div class="curtain curtain-left"></div><div class="curtain curtain-right"></div><div class="booth-sign">Memory Booth</div></div>
     <div class="intro-copy">
       <h1 class="intro-heading" data-split>I made a little place for our memories.</h1>
       <button id="openBooth" class="primary-btn" type="button">Open Our Memory Booth</button>
     </div>
   </section>
-
-  <button id="strawHat" class="straw-hat" type="button" aria-label="Tiny straw hat surprise">👒</button>
 
   <aside class="music-player" aria-label="Background music controls">
     <!-- CUSTOMIZE: replace assets/audio/our-song.mp3 in script.js with your song file. Music never autoplays. -->
@@ -38,14 +36,14 @@
 
   <main id="main">
     <section id="hero" class="hero snap-section" aria-labelledby="siteTitle">
-      <div class="floating-icons" aria-hidden="true"><span>☁️</span><span>✨</span><span>🍵</span><span>🍫</span><span>⚓</span><span>💛</span></div>
+      <div class="floating-icons" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
       <figure class="hero-photo polaroid developing">
         <img id="heroPhoto" src="assets/photos/hero-placeholder.svg" alt="CUSTOMIZE: favorite photo of us" width="900" height="680" />
         <figcaption>Our favorite little frame</figcaption>
         <button class="peel-corner" type="button" aria-label="Peel photo corner">↗</button><span class="private-caption">CUSTOMIZE: a tiny private caption goes here.</span>
       </figure>
       <div class="hero-text">
-        <p class="eyebrow">Private memory booth</p>
+        <p class="eyebrow">Private photo booth</p>
         <h2 id="siteTitle"><span data-content="coupleNames">[YOUR NAMES]</span>’s Little Memory Booth</h2>
         <p class="subtitle">A collection of tiny moments that became my favorite story.</p>
         <p class="date" data-content="anniversaryDate">[DATE]</p>
@@ -60,7 +58,7 @@
     </section>
 
     <section class="food-section reveal" aria-labelledby="foodTitle">
-      <h2 id="foodTitle">Tiny Food-Date Museum</h2>
+      <h2 id="foodTitle">Small Things We Shared</h2>
       <div class="food-grid">
         <article class="banh-mi" aria-label="Animated banh mi illustration"><div class="bread top"></div><div class="veg"></div><div class="filling"></div><div class="herbs"></div><div class="bread bottom"></div><p>Our love language might secretly be sharing good food.</p></article>
         <article class="matcha-card"><div class="steam"><span></span><span></span><span></span></div><div class="cup">🍵</div><div id="chocolate" class="chocolate" draggable="true">🍫</div><p>A little sweet, a little cozy, and always better together.</p></article>
@@ -75,7 +73,7 @@
     </section>
 
     <section class="adventure-map reveal" aria-labelledby="adventureTitle">
-      <h2 id="adventureTitle">Our Greatest Adventure</h2>
+      <h2 id="adventureTitle">A Little Map of Us</h2>
       <svg class="map-svg" viewBox="0 0 900 360" role="img" aria-label="Treasure map trail connecting memories"><path id="mapTrail" d="M40 260 C180 80 290 300 430 170 S670 80 820 240" fill="none" stroke="#8b6239" stroke-width="5" stroke-dasharray="10 14" stroke-linecap="round"/><g class="map-points"><circle cx="40" cy="260" r="10"/><circle cx="430" cy="170" r="10"/><circle cx="820" cy="240" r="10"/></g></svg>
       <button id="mapX" class="map-x" type="button" aria-label="Open hidden love letter">X</button>
       <button id="treasureChest" class="treasure" type="button" aria-expanded="false">🧰</button>
@@ -96,13 +94,13 @@
     <section class="finale snap-section" aria-labelledby="finalTitle">
       <div id="finalStars" class="final-stars" aria-hidden="true"></div><div class="horizon ship-sail">⛵</div>
       <figure class="final-photo polaroid"><img src="assets/photos/final-placeholder.svg" loading="lazy" alt="CUSTOMIZE: final photo of us" width="720" height="540" /><figcaption>Still my favorite view.</figcaption></figure>
-      <div class="picnic" aria-hidden="true">🦆 🦆 🐵 🥖 🍵 🍫</div>
+      <div class="picnic" aria-hidden="true"><span class="mini-duck"></span><span class="mini-duck"></span><span>sleepy monkey</span><span>banh mi · matcha · chocolate</span></div>
       <h2 id="finalTitle" data-content="finalMessage">I would choose every version of this adventure, as long as it has you in it.</h2>
       <button id="replay" class="primary-btn" type="button">Replay Our Memories</button>
     </section>
   </main>
 
-  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden><div class="modal-card"><button id="closeModal" class="close" type="button" aria-label="Close">×</button><h2 id="modalTitle">Secret Memory</h2><div id="modalContent"></div></div></div>
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden><div class="modal-card"><button id="closeModal" class="close" type="button" aria-label="Close">×</button><h2 id="modalTitle">Memory</h2><div id="modalContent"></div></div></div>
   <div id="flash" class="flash" aria-hidden="true"></div>
 </body>
 </html>
