@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A romantic interactive anniversary memory booth scrapbook." />
+  <title>[YOUR NAMES]’s Little Memory Booth</title>
+  <!-- CUSTOMIZE: replace this hero image with your favorite photo. Recommended: 1600×1200 WebP/JPG. -->
+  <link rel="preload" as="image" href="assets/photos/hero-placeholder.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to memories</a>
+  <div class="film-grain" aria-hidden="true"></div>
+
+  <section id="intro" class="intro" aria-label="Opening memory booth animation">
+    <div class="cloud cloud-one"></div><div class="cloud cloud-two"></div><div class="cloud cloud-three"></div>
+    <div class="intro-monkey monkey" role="img" aria-label="Cute monkey hanging from a rope"><span class="rope"></span><span class="monkey-face">🐵</span></div>
+    <div class="intro-ducks" aria-hidden="true"><button class="duck duck-left egg-duck" type="button">🦆</button><span class="heart-between">♥</span><button class="duck duck-right egg-duck" type="button">🦆</button></div>
+    <div class="curtain-wrap" aria-hidden="true"><div class="curtain curtain-left"></div><div class="curtain curtain-right"></div><div class="booth-sign">Memory Booth</div></div>
+    <div class="intro-copy">
+      <h1 class="intro-heading" data-split>I made a little place for our memories.</h1>
+      <button id="openBooth" class="primary-btn" type="button">Open Our Memory Booth</button>
+    </div>
+  </section>
+
+  <button id="strawHat" class="straw-hat" type="button" aria-label="Tiny straw hat surprise">👒</button>
+
+  <aside class="music-player" aria-label="Background music controls">
+    <!-- CUSTOMIZE: replace assets/audio/our-song.mp3 in script.js with your song file. Music never autoplays. -->
+    <audio id="bgMusic" preload="none"></audio>
+    <button id="musicToggle" type="button">Play our song</button>
+    <label>Volume <input id="musicVolume" type="range" min="0" max="1" step="0.01" value="0.55" /></label>
+    <button id="muteToggle" type="button" aria-pressed="false">Mute</button>
+  </aside>
+
+  <main id="main">
+    <section id="hero" class="hero snap-section" aria-labelledby="siteTitle">
+      <div class="floating-icons" aria-hidden="true"><span>☁️</span><span>✨</span><span>🍵</span><span>🍫</span><span>⚓</span><span>💛</span></div>
+      <figure class="hero-photo polaroid developing">
+        <img id="heroPhoto" src="assets/photos/hero-placeholder.svg" alt="CUSTOMIZE: favorite photo of us" width="900" height="680" />
+        <figcaption>Our favorite little frame</figcaption>
+        <button class="peel-corner" type="button" aria-label="Peel photo corner">↗</button><span class="private-caption">CUSTOMIZE: a tiny private caption goes here.</span>
+      </figure>
+      <div class="hero-text">
+        <p class="eyebrow">Private memory booth</p>
+        <h2 id="siteTitle"><span data-content="coupleNames">[YOUR NAMES]</span>’s Little Memory Booth</h2>
+        <p class="subtitle">A collection of tiny moments that became my favorite story.</p>
+        <p class="date" data-content="anniversaryDate">[DATE]</p>
+        <p class="message" data-content="heroMessage">Somehow, all the ordinary days with you became the memories I never want to lose.</p>
+        <p class="scroll-note">Scroll slowly. There are little surprises everywhere.</p>
+      </div>
+    </section>
+
+    <section class="timeline-section" aria-labelledby="timelineTitle">
+      <h2 id="timelineTitle">Our Memory Timeline</h2>
+      <div id="timeline" class="timeline"><!-- Populated from anniversaryData.memories in script.js --></div>
+    </section>
+
+    <section class="food-section reveal" aria-labelledby="foodTitle">
+      <h2 id="foodTitle">Tiny Food-Date Museum</h2>
+      <div class="food-grid">
+        <article class="banh-mi" aria-label="Animated banh mi illustration"><div class="bread top"></div><div class="veg"></div><div class="filling"></div><div class="herbs"></div><div class="bread bottom"></div><p>Our love language might secretly be sharing good food.</p></article>
+        <article class="matcha-card"><div class="steam"><span></span><span></span><span></span></div><div class="cup">🍵</div><div id="chocolate" class="chocolate" draggable="true">🍫</div><p>A little sweet, a little cozy, and always better together.</p></article>
+      </div>
+    </section>
+
+    <section class="booth-gallery reveal" aria-labelledby="galleryTitle">
+      <h2 id="galleryTitle">Photo Booth Strips</h2>
+      <p>Hover, tap, swipe, and take another look.</p>
+      <div id="photoStrips" class="photo-strips"><!-- Populated from config --></div>
+      <button id="shuffleStrips" class="secondary-btn" type="button">Take Another Look</button>
+    </section>
+
+    <section class="adventure-map reveal" aria-labelledby="adventureTitle">
+      <h2 id="adventureTitle">Our Greatest Adventure</h2>
+      <svg class="map-svg" viewBox="0 0 900 360" role="img" aria-label="Treasure map trail connecting memories"><path id="mapTrail" d="M40 260 C180 80 290 300 430 170 S670 80 820 240" fill="none" stroke="#8b6239" stroke-width="5" stroke-dasharray="10 14" stroke-linecap="round"/><g class="map-points"><circle cx="40" cy="260" r="10"/><circle cx="430" cy="170" r="10"/><circle cx="820" cy="240" r="10"/></g></svg>
+      <button id="mapX" class="map-x" type="button" aria-label="Open hidden love letter">X</button>
+      <button id="treasureChest" class="treasure" type="button" aria-expanded="false">🧰</button>
+      <p id="treasureMessage" hidden>The greatest treasure was finding you.</p><div class="ship" aria-hidden="true">⛵</div>
+    </section>
+
+    <section class="reasons reveal" aria-labelledby="reasonsTitle">
+      <h2 id="reasonsTitle">Reasons I Love You</h2>
+      <div id="reasonSky" class="reason-sky"><!-- Populated from config --></div>
+    </section>
+
+    <section class="letter-section reveal" aria-labelledby="letterTitle">
+      <h2 id="letterTitle">A Letter For You</h2>
+      <button id="envelope" class="envelope" type="button" aria-expanded="false"><span class="flap"></span><span class="env-body"></span><span class="letter-preview">Open me</span></button>
+      <article id="loveLetter" class="love-letter" tabindex="-1"><!-- Populated from config --></article>
+    </section>
+
+    <section class="finale snap-section" aria-labelledby="finalTitle">
+      <div id="finalStars" class="final-stars" aria-hidden="true"></div><div class="horizon ship-sail">⛵</div>
+      <figure class="final-photo polaroid"><img src="assets/photos/final-placeholder.svg" loading="lazy" alt="CUSTOMIZE: final photo of us" width="720" height="540" /><figcaption>Still my favorite view.</figcaption></figure>
+      <div class="picnic" aria-hidden="true">🦆 🦆 🐵 🥖 🍵 🍫</div>
+      <h2 id="finalTitle" data-content="finalMessage">I would choose every version of this adventure, as long as it has you in it.</h2>
+      <button id="replay" class="primary-btn" type="button">Replay Our Memories</button>
+    </section>
+  </main>
+
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden><div class="modal-card"><button id="closeModal" class="close" type="button" aria-label="Close">×</button><h2 id="modalTitle">Secret Memory</h2><div id="modalContent"></div></div></div>
+  <div id="flash" class="flash" aria-hidden="true"></div>
+</body>
+</html>
