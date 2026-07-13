@@ -23,6 +23,7 @@ Edit the `anniversaryData` object near the top of `script.js`:
 - `heroPhoto`
 - `heroMessage`
 - `memories` dates, titles, text, decorations, and photo paths
+- `firstDateStops` text and placeholder photo paths for Princeton, the Turkish store, the Asian store, and Mercer Park
 - `photoStrips` captions and four photos per strip
 - `reasonsILoveYou`
 - `loveLetter`
@@ -78,6 +79,7 @@ Then open `http://localhost:4173` in a browser. Use DevTools mobile emulation to
 
 - Intro timeline: clouds drift, ducks waddle in, monkey swings, heading letters stagger, and curtains slide open.
 - Hero timeline: the main image develops from blurred/soft to sharp with a gentle flash.
+- Tabs: First date map, Photos, and Letter keep the page cleaner while preserving the booth animation.
 - Scroll reveals: Intersection Observer triggers timeline cards, food assembly, map trail drawing, and envelope movement.
 - Gallery interactions: strips rise on hover, tap opens a modal, and **Take Another Look** shuffles strips with a flash.
 - Easter eggs: duck clicks, monkey click, chocolate drop, LOVE keyboard code, peelable photo corner, treasure-map X, and chest click.

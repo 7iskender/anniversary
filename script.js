@@ -25,12 +25,61 @@ const anniversaryData = {
   loveLetter: "My love,\n\nLooking through these memories reminded me that my favorite part of every adventure has always been sharing it with you. Thank you for the laughter, the comfort, the food dates, the quiet moments, and all the strange little things that have become ours.\n\nI hope this is only the beginning of the collection.\n\nHappy anniversary.\n\nLove,\n[YOUR NAME]",
   finalMessage: "I would choose every version of this adventure, as long as it has you in it.",
   musicPath: "assets/audio/our-song.mp3",
-  easterEggMessages: { monkey: "A tiny note: I love how easy it is to laugh with you.", ducks: "A quiet little message, just for us.", mapX: "CUSTOMIZE: Put your longer private love letter in this hidden map note." }
+  easterEggMessages: { monkey: "A tiny note: I love how easy it is to laugh with you.", ducks: "A quiet little message, just for us.", mapX: "CUSTOMIZE: Put your longer private love letter in this hidden map note." },
+  firstDateStops: {
+    princeton: {
+      title: "Princeton bench + matcha spill",
+      text: "CUSTOMIZE: I picked you up, we went to Princeton, sat together, and I somehow tried to poke the matcha lid with the straw so confidently that it spilled on both of our shirts.",
+      photo: "assets/photos/princeton-bench-placeholder.svg",
+      art: "princeton"
+    },
+    turkish: {
+      title: "The Turkish store",
+      text: "CUSTOMIZE: We stopped for chocolate for you to try. Add the candy wrapper photo or storefront here.",
+      photo: "assets/photos/turkish-store-placeholder.svg",
+      art: "store"
+    },
+    asian: {
+      title: "The Asian store",
+      text: "CUSTOMIZE: Add what you bought, what aisle you remember, or the tiny thing that made this stop ours.",
+      photo: "assets/photos/asian-store-placeholder.svg",
+      art: "asian"
+    },
+    mercer: {
+      title: "Mercer Park sunset",
+      text: "CUSTOMIZE: We went north to Mercer Park and the sun was setting. It was calm and lovely.",
+      photo: "assets/photos/mercer-sunset-placeholder.svg",
+      art: "sunset"
+    }
+  }
 };
 
 const $ = (s, root=document) => root.querySelector(s); const $$ = (s, root=document) => [...root.querySelectorAll(s)];
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const hasAnime = () => window.anime && !reduced;
+
+function sceneMarkup(stop){
+  const art = {
+    princeton: `<div class="scene-art princeton-art"><div class="stone-building"></div><div class="bench"></div><div class="matcha-spill"></div></div>`,
+    store: `<div class="scene-art store-art"><div class="store-awning"></div><div class="shelves"></div><div class="chocolate-bar"></div></div>`,
+    asian: `<div class="scene-art asian-art"><div class="store-awning green"></div><div class="shelves tall"></div><div class="basket"></div></div>`,
+    sunset: `<div class="scene-art sunset-art"><div class="sun"></div><div class="lake"></div><div class="park-bench"></div></div>`
+  }[stop.art];
+  return `<div class="route-scene-grid">${art}<div class="scene-copy"><p class="eyebrow">Clickable stop</p><h3>${stop.title}</h3><p>${stop.text}</p><img src="${stop.photo}" loading="lazy" alt="CUSTOMIZE: ${stop.title} photo placeholder" width="520" height="360"></div></div>`;
+}
+function showRouteStop(key){
+  const stop = anniversaryData.firstDateStops[key] || anniversaryData.firstDateStops.princeton;
+  $('#routeScene').innerHTML = sceneMarkup(stop);
+  $$('.route-dot').forEach(dot => dot.classList.toggle('active', dot.dataset.stop === key));
+  if(hasAnime()) anime({targets:'#routeScene', opacity:[0,1], translateY:[16,0], duration:420, easing:'easeOutCubic'});
+}
+function bindTabs(){
+  $$('.tab-button').forEach(button => button.addEventListener('click', () => {
+    $$('.tab-button').forEach(b => b.classList.toggle('active', b === button));
+    $$('.tab-panel').forEach(panel => panel.classList.toggle('active', panel.id === button.dataset.tabTarget));
+    document.querySelector(`#${button.dataset.tabTarget}`).scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block: 'start'});
+  }));
+}
 
 function setContent(){
   document.title = `${anniversaryData.coupleNames}’s Little Memory Booth`;
@@ -51,7 +100,7 @@ function openBooth(){ if(hasAnime()){ anime.timeline({easing:'easeInOutCubic'}).
 function observe(){ const io=new IntersectionObserver(entries=>entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in-view'); if(hasAnime()) anime({targets:e.target,opacity:[0,1],translateY:[40,0],duration:750,easing:'easeOutCubic'}); animateSpecial(e.target); }}),{threshold:.18}); $$('.reveal,.memory-card').forEach(el=>io.observe(el)); }
 function animateSpecial(el){ if(!hasAnime())return; if(el.classList.contains('adventure-map')){ const path=$('#mapTrail'); anime.set(path,{strokeDashoffset:anime.setDashoffset}); anime({targets:path,strokeDashoffset:[anime.setDashoffset,0],duration:1800,easing:'easeInOutSine'}); } if(el.classList.contains('letter-section')) anime({targets:'#envelope',translateY:[20,-8,0],duration:1200,easing:'easeOutElastic(1,.8)'}); if(el.classList.contains('food-section')) anime({targets:'.banh-mi > div',translateY:[-40,0],opacity:[0,1],delay:anime.stagger(130),easing:'easeOutBack'}); }
 function modal(title, html){ $('#modalTitle').textContent=title; $('#modalContent').innerHTML=html; $('#modal').hidden=false; $('#closeModal').focus(); }
-function bind(){ $('#openBooth').addEventListener('click',openBooth); $('#replay').addEventListener('click',()=>{window.scrollTo({top:0,behavior:reduced?'auto':'smooth'}); $('#intro').classList.remove('is-open'); document.body.classList.remove('ready'); introAnimations();}); $('#closeModal').onclick=()=>$('#modal').hidden=true; $('#modal').addEventListener('click',e=>{if(e.target.id==='modal')$('#modal').hidden=true}); addEventListener('keydown',e=>{ if(e.key==='Escape')$('#modal').hidden=true; loveCode(e.key); });
+function bind(){ bindTabs(); $$('.route-dot').forEach(dot=>dot.addEventListener('click',()=>showRouteStop(dot.dataset.stop))); $('#openBooth').addEventListener('click',openBooth); $('#replay').addEventListener('click',()=>{window.scrollTo({top:0,behavior:reduced?'auto':'smooth'}); $('#intro').classList.remove('is-open'); document.body.classList.remove('ready'); introAnimations();}); $('#closeModal').onclick=()=>$('#modal').hidden=true; $('#modal').addEventListener('click',e=>{if(e.target.id==='modal')$('#modal').hidden=true}); addEventListener('keydown',e=>{ if(e.key==='Escape')$('#modal').hidden=true; loveCode(e.key); });
   $$('.egg-duck').forEach(d=>d.addEventListener('click',e=>{ const q=document.createElement('span'); q.className='quack'; q.textContent='quack!'; q.style.left=e.clientX+'px'; q.style.top=e.clientY+'px'; document.body.append(q); setTimeout(()=>q.remove(),900); duckClicks.add(d); if(duckClicks.size>1) modal('Duck secret', anniversaryData.easterEggMessages.ducks); }));
   $('.monkey').addEventListener('click',()=>modal('Cheeky monkey', anniversaryData.easterEggMessages.monkey)); $('.monkey').addEventListener('mouseenter',()=>hasAnime()&&anime({targets:'.monkey-face',translateX:[0,10,0],duration:500}));
   $('#treasureChest').onclick=()=>{ $('#treasureMessage').hidden=false; $('#treasureChest').setAttribute('aria-expanded','true');}; $('#mapX').onclick=()=>modal('Treasure-map note', `<p>${anniversaryData.easterEggMessages.mapX}</p>`);
@@ -64,5 +113,5 @@ function burstHearts(){ for(let i=0;i<24;i++){ const h=document.createElement('s
 function musicControls(){ const audio=$('#bgMusic'), vol=$('#musicVolume'), toggle=$('#musicToggle'), mute=$('#muteToggle'); vol.value=sessionStorage.memoryBoothVolume||.55; audio.volume=vol.value; toggle.onclick=()=> audio.paused ? audio.play().then(()=>toggle.textContent='Pause our song').catch(()=>modal('Music note','Add your audio file at assets/audio/our-song.mp3, then try again.')) : (audio.pause(),toggle.textContent='Play our song'); vol.oninput=()=>{audio.volume=vol.value;sessionStorage.memoryBoothVolume=vol.value}; mute.onclick=()=>{audio.muted=!audio.muted;mute.textContent=audio.muted?'Unmute':'Mute';mute.setAttribute('aria-pressed',audio.muted)}; }
 function dragChocolate(){ const ch=$('#chocolate'), cup=$('.cup'); ch.addEventListener('dragstart',e=>e.dataTransfer.setData('text/plain','chocolate')); cup.addEventListener('dragover',e=>e.preventDefault()); cup.addEventListener('drop',()=>modal('Cozy secret','Chocolate + matcha unlocked. Better together, obviously.')); }
 function finalStars(){ const box=$('#finalStars'); for(let i=0;i<38;i++){ const s=document.createElement('span'); s.textContent='✦'; s.style.left=Math.random()*100+'%'; s.style.top=Math.random()*70+'%'; s.style.animationDelay=Math.random()*4+'s'; box.append(s); }}
-function init(){ setContent(); splitIntro(); buildTimeline(); buildGallery(); buildReasons(); finalStars(); bind(); observe(); introAnimations(); }
+function init(){ setContent(); splitIntro(); buildTimeline(); buildGallery(); buildReasons(); finalStars(); showRouteStop("princeton"); bind(); observe(); introAnimations(); }
 document.addEventListener('DOMContentLoaded', init);
